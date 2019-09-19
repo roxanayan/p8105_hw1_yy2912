@@ -1,0 +1,37 @@
+---
+title: "p8105_hw1_yy2912.Rmd"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+``` 
+
+```{r setup, include = FALSE}
+library(tidyverse)
+```
+
+```{r}
+
+q1_df = tibble(
+  vec_numeric = rnorm(8),
+  vec_logical = norm_samp > 0,
+  vec_char = c("This", "dataset", "comes", "from", "groups", "of", "cancer", "patients"),
+  vec_factor = factor(c("young" "middleage" "old")
+)
+mean_samp = mean(pull(q1_df, norm_samp)),
+mean_samp = mean(pull(q1_df, norm_logical)),
+mean_samp = mean(pull(q1_df, norm_char)),
+mean_samp = mean(pull(q1_df, norm_factor))
+
+
+```
+
+
+ggplot(la_df, aes(x = abs_norm_samp)) + geom_histogram()
+
+median_samp = median(pull(la_df, norm_samp))
+```
+
+The median of the variable containing absolute values is 
+`r round(median_samp, digits = 2)`.
