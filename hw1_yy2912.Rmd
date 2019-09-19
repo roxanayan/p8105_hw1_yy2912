@@ -1,37 +1,72 @@
 ---
 title: "p8105_hw1_yy2912.Rmd"
-output: html_document
+output: github_document
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-``` 
+##problem 1 create a dataframe with different variable types##
 
 ```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
 ```{r}
-
-q1_df = tibble(
+q1dataframe = tibble(
   vec_numeric = rnorm(8),
-  vec_logical = norm_samp > 0,
+  vec_logical = vec_numeric > 0,
   vec_char = c("This", "dataset", "comes", "from", "groups", "of", "cancer", "patients"),
-  vec_factor = factor(c("young" "middleage" "old")
+  vec_factor = factor(c("young", "young", "young", "middleage","middleage","middleage", "old", "old"))
 )
-mean_samp = mean(pull(q1_df, norm_samp)),
-mean_samp = mean(pull(q1_df, norm_logical)),
-mean_samp = mean(pull(q1_df, norm_char)),
-mean_samp = mean(pull(q1_df, norm_factor))
 
+class(pull(q1dataframe, vec_numeric))
+class(pull(q1dataframe, vec_logical))
+class(pull(q1dataframe, vec_char))
+class(pull(q1dataframe, vec_factor))
 
+mean_numeric = mean(pull(q1dataframe, vec_numeric))
+mean_logical = mean(pull(q1dataframe, vec_logical))
+mean_char = mean(pull(q1dataframe, vec_char))
+mean_factor = mean(pull(q1dataframe, vec_factor))
+```
+##when take mean of the variables, character and factor variables do not work; numeric and logical variable work ##
+
+```{r}
+set.seed(13)
+x = as.numeric(q1dataframe$vec_logical)
+y = as.numeric(q1dataframe$vec_char)
+z = as.numeric(q1dataframe$vec_factor)
+
+x*q1dataframe$vec_numeric
+y*q1dataframe$vec_numeric
+z*q1dataframe$vec_numeric
 ```
 
+##question 2 creates a dataframe 
 
-ggplot(la_df, aes(x = abs_norm_samp)) + geom_histogram()
+```{r}
+set.seed(13)
 
-median_samp = median(pull(la_df, norm_samp))
+q2dataframe = tibble(
+  x = rnorm(500),
+  y = rnorm(500),
+  vec_logical1 = x+y > 1,
+  vec_numeric1 = as.numeric(vec_logical1),
+  vec_factor1 = as.factor(vec_logical1), 
+)
+
+ggplot(q2dataframe, aes(x = x, y = y, color = vec_logical1)) + geom_point()
+
+ggplot(q2dataframe, aes(x = x, y = y, color = vec_numeric1)) + geom_point()
+       
+ggplot(q2dataframe, aes(x = x, y = y, color = vec_factor1)) + geom_point()
+```
+##save the first scatterplot using ggsave
+```{r}  
+ggsave("hw1_yy2912.pdf")
 ```
 
-The median of the variable containing absolute values is 
-`r round(median_samp, digits = 2)`.
+##the number of rows in the dataset is `r nrow(q2dataframe)` and the number of column in the dataset is `r ncol(q2dataframe)`
+the mean is `r mean(pull(q2dataframe, x))`, 
+the median is `r median(pull(q2dataframe, x))`, 
+and standard deviation is `r sd(pull(q2dataframe, x))` 
+the proportion of cases for which x + y > 1 is `r length(q2dataframe$vec_logical1)`
+
