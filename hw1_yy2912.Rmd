@@ -47,8 +47,8 @@ logical and factor variables can be converted to numeric variables but character
 set.seed(13)
 
 q2dataframe = tibble(
-  x = rnorm(500),
-  y = rnorm(500),
+  x = rnorm(500, mean=0, sd=1),
+  y = rnorm(500, mean=0, sd=1),
   vec_logical1 = x+y > 1,
   vec_numeric1 = as.numeric(vec_logical1),
   vec_factor1 = as.factor(vec_logical1), 
