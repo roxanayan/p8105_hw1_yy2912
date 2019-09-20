@@ -62,7 +62,7 @@ ggplot(q2dataframe, aes(x = x, y = y, color = vec_factor1)) + geom_point()
 ```
 
 for scatterplot #1, if "x+y>1" is true, then dots are colored blue; if "x+y>1" is false, then dots are colored red. 
-for scatterplot #2, color scale changes gradually from dark blue to light blue as both x and y gradually increases. 
+for scatterplot #2, color scale changes gradually from dark blue to light blue as the value of vec_numeric1 gradually increases. 
 for scatterplot #3, if "x+y>1" is true, then dots are colored blue; if "x+y>1" is false, then dots are colored red.
 
 ##save the first scatterplot using ggsave
