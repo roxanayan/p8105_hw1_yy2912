@@ -74,6 +74,6 @@ the number of rows in the dataset is `r nrow(q2dataframe)` and the number of col
 
 the mean is `r mean(pull(q2dataframe, x))`, 
 the median is `r median(pull(q2dataframe, x))`, 
-and standard deviation is `r sd(pull(q2dataframe, x))` 
+and standard deviation is `r sd(pull(q2dataframe, x))`, 
 the proportion of cases for which x + y > 1 is `r mean(q2dataframe$vec_logical1)`
 
