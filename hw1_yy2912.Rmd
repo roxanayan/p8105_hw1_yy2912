@@ -39,6 +39,7 @@ x*q1dataframe$vec_numeric
 y*q1dataframe$vec_numeric
 z*q1dataframe$vec_numeric
 ```
+logical and factor variables can be converted to numeric variables but character variables cannot. This can explain why character variable cannot take the mean but cannot explain why factor variables cannot take the mean. 
 
 ##question 2 creates a dataframe 
 
